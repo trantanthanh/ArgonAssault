@@ -584,15 +584,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972534431178057005, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1972534431178057005, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1972534431178057005, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1972534431178057005, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -605,6 +605,18 @@ PrefabInstance:
     - target: {fileID: 1972534431178057005, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837236970000145275, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}
+      propertyPath: positionYawFactor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837236970000145275, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}
+      propertyPath: positionRollFactor
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837236970000145275, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}
+      propertyPath: positionPitchFactor
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70bc6b6358059e04bbf40b0ecb70b375, type: 3}

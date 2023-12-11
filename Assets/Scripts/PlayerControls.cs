@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 // using UnityEngine.InputSystem;
 
@@ -8,6 +9,14 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float movementSpeed = 10f;
     [SerializeField] float xRange = 10f;
     [SerializeField] float yRange = 5f;
+
+    [SerializeField] float positionPitchFactor = -1f;
+    [SerializeField] float controlPitchFactor = -10f;
+    [SerializeField] float positionYawFactor = 1f;
+    [SerializeField] float controlRollFactor = 10f;
+    [SerializeField] float positionRollFactor = -1f;
+    float yThrow, xThrow;
+
     // [SerializeField] InputAction movementInput;
     // Start is called before the first frame update
     void Start()
@@ -28,10 +37,24 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xThrow = Input.GetAxis("Horizontal");
+        ProcessTranslation();
+        ProcessRotation();
+    }
+
+    void ProcessRotation()
+    {
+        float pitch = transform.localPosition.y * positionPitchFactor + yThrow * controlPitchFactor;
+        float yaw = transform.localPosition.x * positionYawFactor ;
+        float roll = transform.localPosition.z * positionRollFactor + xThrow * controlRollFactor;
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    void ProcessTranslation()
+    {
+        xThrow = Input.GetAxis("Horizontal");
         // float horizontalThrow = movementInput.ReadValue<Vector2>().x;
 
-        float yThrow = Input.GetAxis("Vertical");
+        yThrow = Input.GetAxis("Vertical");
         // float verticalThrow = movementInput.ReadValue<Vector2>().y;
 
         float xOffset = movementSpeed * xThrow * Time.deltaTime * 5f;
