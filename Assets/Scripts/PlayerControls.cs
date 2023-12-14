@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 // using UnityEngine.InputSystem;
 
@@ -16,6 +16,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float controlRollFactor = 10f;
     [SerializeField] float positionRollFactor = -1f;
     float yThrow, xThrow;
+
+    [SerializeField] GameObject[] lasers;
 
     // [SerializeField] InputAction movementInput;
     // Start is called before the first frame update
@@ -39,6 +41,28 @@ public class PlayerControls : MonoBehaviour
     {
         ProcessTranslation();
         ProcessRotation();
+        ProcessFiring();
+    }
+
+    private void ProcessFiring()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            SetActiveLasers(true);
+        }
+        else
+        {
+            SetActiveLasers(false);
+        }
+    }
+
+    void SetActiveLasers(bool isActive)
+    {
+        foreach (GameObject laser in lasers)
+        {
+            var emissionModule = laser.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = isActive;
+        }
     }
 
     void ProcessRotation()
@@ -46,7 +70,7 @@ public class PlayerControls : MonoBehaviour
         float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
         float pitchDueToControlThrow = yThrow * controlPitchFactor;
         float pitch = pitchDueToPosition + pitchDueToControlThrow;
-        float yaw = transform.localPosition.x * positionYawFactor ;
+        float yaw = transform.localPosition.x * positionYawFactor;
         float roll = transform.localPosition.z * positionRollFactor + xThrow * controlRollFactor;
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
