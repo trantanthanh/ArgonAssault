@@ -6,10 +6,14 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
+    [Header("Movement Settings")]
+    [Tooltip("How fast the player moves up and down")]
     [SerializeField] float movementSpeed = 10f;
     [SerializeField] float xRange = 10f;
     [SerializeField] float yRange = 5f;
 
+    [Header("Rotation Settings")]
+    [Tooltip("How fast the player turns")]
     [SerializeField] float positionPitchFactor = -1f;
     [SerializeField] float controlPitchFactor = -10f;
     [SerializeField] float positionYawFactor = 1f;
@@ -17,6 +21,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float positionRollFactor = -1f;
     float yThrow, xThrow;
 
+    [Header("Firing Settings")]
+    [Tooltip("Left right lasers")]
     [SerializeField] GameObject[] lasers;
 
     // [SerializeField] InputAction movementInput;
